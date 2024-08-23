@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Timer</title>
+    <style>
+
+        .rounds{
+            background-color: antiquewhite;
+            height: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button onclick="takeTime()">Start</button>
+    <button onclick="pauseTimer()">Runde</button>
+    <button onclick="stopAll()">Stopp</button>
+
+    <div id="myTimer"></div>
+
+    Rundetider:
+    <div id="lastRound"></div>
+
+</body>
+
+<script>
+
+    const myTimer = document.getElementById('myTimer');
+    const roundTime = document.getElementById('lastRound');
+    let seconds = 0;
+    var timer;
+
+    function takeTime(){
+       setInterval(countSeconds,1000);
+    }
+
+    function countSeconds(){
+        myTimer.innerHTML = seconds;
+        seconds++;
+    }
+
+    function pauseTimer(){
+        roundTime.innerHTML +- `<li>${seconds-1} sekunder</li>`;
+        clearInterval(timer);
+        seconds = 0;
+    }
+
+    function stopAll(){
+        location.reload()
+    }
+
+</script>
+
+</html>
