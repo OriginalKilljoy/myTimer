@@ -6,25 +6,61 @@
     <title>My Timer</title>
     <style>
 
+        .wrapper{
+            background-color: rgb(187, 230, 173);
+            height: 220px;
+            width: 220px;
+            border-radius: 50%;
+            padding: 20px;
+        }
+
         .rounds{
-            background-color: antiquewhite;
+            background-color: rgb(99, 148, 67);
             height: 50px;
+            width: 90px;
+            border: 1px solid black;
+            margin-left: 65px;
+            font-size: small;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .timer{
+            height: 40px;
+            width: 40px;
+            border: 1px solid black;
+            margin-top: 10px;
+            margin-left: 90px;
+            background-color: rgb(99, 148, 67);
+            font-size: medium;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .timerButtons{
+            margin-top: 20px;
+            margin-left: 15px;
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            background-color: rgb(109, 160, 95);
+        }
+
+        .text{
+            font-size: medium;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-left: 70px;
         }
 
     </style>
 </head>
 <body>
+<div class="wrapper"> 
 
-    <button onclick="takeTime()">Start</button>
-    <button onclick="pauseTimer()">Runde</button>
-    <button onclick="stopAll()">Stopp</button>
-
-    <div id="myTimer"></div>
-
-    Rundetider:
-    <div id="lastRound"></div>
-
-</body>
+    <button class="timerButtons" onclick="startTimer()">Start</button>
+    <button class="timerButtons" onclick="pauseTimer()">Runde</button>
+    <button class="timerButtons" onclick="stopTimer()">Stopp</button><br>
+    
+    <div id="myTimer" class="timer"></div> <div class="text">Rundetider:</div><div id="lastRound" class="rounds"></div><br>
+</div>
 
 <script>
 
@@ -33,8 +69,8 @@
     let seconds = 0;
     var timer;
 
-    function takeTime(){
-       setInterval(countSeconds,1000);
+    function startTimer(){
+       setInterval(countSeconds, 1000);
     }
 
     function countSeconds(){
@@ -43,15 +79,17 @@
     }
 
     function pauseTimer(){
-        roundTime.innerHTML +- `<li>${seconds-1} sekunder</li>`;
+        roundTime.innerHTML += `<li>${seconds-1} sekunder</li>`;
         clearInterval(timer);
         seconds = 0;
     }
 
-    function stopAll(){
+    function stopTimer(){
         location.reload()
     }
 
 </script>
+</body>
+
 
 </html>
